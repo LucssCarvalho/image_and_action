@@ -35,7 +35,7 @@ Widget buttonTypeGame(context, String type) {
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => PageGame(type),
+            builder: (context) => PageGameScreen(type),
           ),
         );
       },
