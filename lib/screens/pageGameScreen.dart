@@ -17,75 +17,135 @@ class _PageGameScreenState extends State<PageGameScreen> {
 
   _PageGameScreenState(this.type);
 
-  List<String> list = new ObjectList().allList;
+  List<String> list;
 
   String object;
 
+  selectListType(type) {
+    if (type == 'TUDO') {
+      setState(() {
+        list = new ObjectList().allList;
+      });
+    } else if (type == 'ANIMAIS') {
+      setState(() {
+        list = new ObjectList().listAnimais;
+      });
+    } else if (type == 'OBJETOS') {
+      setState(() {
+        list = new ObjectList().listObjetos;
+      });
+    } else if (type == 'VERBOS') {
+      setState(() {
+        list = new ObjectList().listVerbos;
+      });
+    }
+  }
+
   initState() {
     super.initState();
+    selectListType(type);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Categoria: $type',
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        centerTitle: true,
-        actions: <Widget>[
-          MaterialButton(
-            color: Colors.redAccent,
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  Icons.refresh,
-                  color: Colors.white,
-                ),
-                Text(
-                  'Jogar',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ],
-            ),
-            onPressed: () {
-              if (type == 'TUDO') {
-                random(list);
-              } else {
-                print('Nenhum tipo encontrado');
-              }
-            },
-          ),
-        ],
-      ),
       body: SafeArea(
         child: Container(
-          color: Colors.red[100],
-          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/background.jpg'),
+                fit: BoxFit.cover),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Categoria: $type',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text(
-                      object.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 50,
-                      ),
-                      textAlign: TextAlign.center,
+                  object == null
+                      ? Row()
+                      : Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                          child: MaterialButton(
+                            color: Colors.green[700],
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.refresh,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  'Trocar palavra',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                              ],
+                            ),
+                            onPressed: () {
+                              random(list);
+                            },
+                          ),
+                        ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    height: 250,
+                    width: 450,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/quadro.png'),
+                          fit: BoxFit.fill),
+                    ),
+                    child: object != null
+                        ? Text(
+                            object.toString(),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 50,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          )
+                        : MaterialButton(
+                            color: Colors.green[800],
+                            child: Text(
+                              'Jogar',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            onPressed: () {
+                              random(list);
+                            },
+                          ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        MaterialButton(
+                          color: Colors.green[700],
+                          child: Text(
+                            'Opções',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              )
+                ],
+              ),
             ],
           ),
         ),
