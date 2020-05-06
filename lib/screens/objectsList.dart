@@ -295,4 +295,8 @@ class ObjectList {
     'bexiga',
     'bife',
   ];
+
+  List<String> listAnimais = ['leao', 'elefante'];
+  List<String> listObjetos = ['faca', 'garfo'];
+  List<String> listVerbos = ['pular', 'andar'];
 }
