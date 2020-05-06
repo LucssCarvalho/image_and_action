@@ -6,12 +6,12 @@ class SelectGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.redAccent,
+        color: Colors.green[900],
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            buttonTypeGame(context, 'TUDO', '♾️'),
+            buttonTypeGame(context, 'TUDO', '🃏'),
             buttonTypeGame(context, 'ANIMAIS', '🦁'),
             buttonTypeGame(context, 'OBJETOS', '🎳'),
             buttonTypeGame(context, 'VERBOS', '💃🏼'),
@@ -28,7 +28,7 @@ Widget buttonTypeGame(context, String type, String emoji) {
     child: MaterialButton(
       child: Container(
           decoration: BoxDecoration(
-            color: Colors.red[800],
+            color: Colors.green,
             borderRadius: BorderRadius.circular(15),
           ),
           height: 70,
