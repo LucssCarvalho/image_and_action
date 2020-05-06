@@ -1,5 +1,5 @@
 class ObjectList {
-  List allList = [
+  List<String> allList = [
     'Cheiro',
     'Disquete',
     'Desenhar',
@@ -58,7 +58,6 @@ class ObjectList {
     'Coletivo',
     'Valentão',
     'Batata',
-    'Gala',
     'Triste',
     'Personalidade',
     'Headband',
