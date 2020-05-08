@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:image_and_action/screens/objectsList.dart';
+import 'package:image_and_action/widgets/bottomSheet.dart';
 
 class PageGameScreen extends StatefulWidget {
   final String type;
@@ -49,6 +50,14 @@ class _PageGameScreenState extends State<PageGameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Categoria: $type',
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -57,95 +66,97 @@ class _PageGameScreenState extends State<PageGameScreen> {
                 fit: BoxFit.cover),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Categoria: $type',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  object == null
-                      ? Row()
-                      : Padding(
-                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                          child: MaterialButton(
-                            color: Colors.green[700],
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.refresh,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  'Trocar palavra',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            onPressed: () {
-                              random(list);
-                            },
-                          ),
+              Container(
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Crie as equipes para jogar',
+                          style: TextStyle(fontSize: 18),
                         ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    height: 250,
-                    width: 450,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/quadro.png'),
-                          fit: BoxFit.fill),
+                      ),
                     ),
-                    child: object != null
-                        ? Text(
-                            object.toString(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 50,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          )
-                        : MaterialButton(
-                            color: Colors.green[800],
-                            child: Text(
-                              'Jogar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
-                            ),
-                            onPressed: () {
-                              random(list);
-                            },
-                          ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        MaterialButton(
-                          color: Colors.green[700],
-                          child: Text(
-                            'Opções',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () {},
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.lightGreen,
+                        child: IconButton(
+                          color: Colors.white,
+                          icon: Icon(Icons.person_add),
+                          onPressed: () {
+                            showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(25.0))),
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (context) {
+                                return Container(
+                                  margin: const EdgeInsets.only(top: 40.0),
+                                  child: CreateTeam(),
+                                );
+                              },
+                            );
+                          },
                         ),
-                      ],
-                    ),
-                  ),
-                ],
+                      ),
+                    )
+                  ],
+                ),
               ),
+
+              // Container(
+              //   height: 250,
+              //   width: 450,
+              //   alignment: Alignment.center,
+              //   decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //         image: AssetImage('assets/images/quadro.png'),
+              //         fit: BoxFit.fill),
+              //   ),
+              //   child: object != null
+              //       ? Text(
+              //           object.toString(),
+              //           style: TextStyle(
+              //               fontWeight: FontWeight.w500,
+              //               fontSize: 50,
+              //               color: Colors.white),
+              //           textAlign: TextAlign.center,
+              //         )
+              //       : MaterialButton(
+              //           color: Colors.green[800],
+              //           child: Text(
+              //             'Jogar',
+              //             style:
+              //                 TextStyle(color: Colors.white, fontSize: 18),
+              //           ),
+              //           onPressed: () {
+              //             random(list);
+              //           },
+              //         ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(right: 20.0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.end,
+              //     children: <Widget>[
+              //       MaterialButton(
+              //         color: Colors.green[700],
+              //         child: Text(
+              //           'Opções',
+              //           style: TextStyle(color: Colors.white),
+              //         ),
+              //         onPressed: () {},
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),
