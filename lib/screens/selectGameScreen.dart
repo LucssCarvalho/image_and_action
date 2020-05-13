@@ -6,7 +6,8 @@ class SelectGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.green[900],
+       decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/wallpaper.jpg'),
+       fit: BoxFit.fill),),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +29,7 @@ Widget buttonTypeGame(context, String type, String emoji) {
     child: MaterialButton(
       child: Container(
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(15),
           ),
           height: 70,
@@ -38,7 +39,7 @@ Widget buttonTypeGame(context, String type, String emoji) {
             children: <Widget>[
               Text(
                 type,
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                style: TextStyle(fontSize: 20, color: Colors.blueGrey[800]),
               ),
               Text(
                 emoji,

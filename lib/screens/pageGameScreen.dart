@@ -51,6 +51,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[900],
         title: Text(
           'Categoria: $type',
           style: TextStyle(
@@ -84,7 +85,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CircleAvatar(
-                        backgroundColor: Colors.lightGreen,
+                        backgroundColor: Colors.blueGrey,
                         child: IconButton(
                           color: Colors.white,
                           icon: Icon(Icons.person_add),

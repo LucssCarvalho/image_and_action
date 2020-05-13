@@ -51,7 +51,7 @@ class _CreateTeamState extends State<CreateTeam> {
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
                       'Criar equipe',
-                      style: TextStyle(color: Colors.green, fontSize: 25),
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 25),
                     ),
                   )
                 ],
@@ -210,7 +210,7 @@ class _CreateTeamState extends State<CreateTeam> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
-                      color: Colors.lightGreen,
+                      color: Colors.blueGrey,
                       onPressed: () {},
                       child: Container(
                         alignment: Alignment.center,
