@@ -73,7 +73,7 @@ class _CreateTeamState extends State<CreateTeam> {
                     ),
                   ),
                   validator: (text) {
-                    if (text.isEmpty) return "digite o nome do pokemon";
+                    if (text.isEmpty) return "digite o nome da equipe";
                   },
                 ),
               ),
