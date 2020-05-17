@@ -6,8 +6,11 @@ class SelectGame extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-       decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/wallpaper.jpg'),
-       fit: BoxFit.fill),),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/wallpaper.jpg'),
+              fit: BoxFit.fill),
+        ),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
