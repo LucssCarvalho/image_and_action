@@ -197,14 +197,18 @@ class _PageGameScreenState extends State<PageGameScreen> {
           color: Colors.blueGrey,
           child: Column(
             children: <Widget>[
-              Text(
-                'Para jogar é necessario pelo menos duas equipes',
-                style: TextStyle(color: Colors.grey[400]),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Para jogar é necessario pelo menos duas equipes',
+                  style: TextStyle(color: Colors.grey[400]),
+                ),
               ),
               teams == null
                   ? Row()
                   : Container(
-                      height: 100,
+                      color: Colors.white,
+                      height: 60,
                       child: Row(
                         children: <Widget>[
                           Expanded(
@@ -230,25 +234,14 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                       );
                                     },
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
                                       child: Column(
                                         children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              teams[index].teamName,
-                                              style: TextStyle(fontSize: 20),
-                                            ),
+                                          Text(
+                                            teams[index].teamName,
+                                            style: TextStyle(fontSize: 20),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0, right: 8.0),
-                                            child: Text(
-                                                'Pontos: ${teams[index].ponts.toString()}'),
-                                          )
+                                          Text(
+                                              'Pontos: ${teams[index].ponts.toString()}')
                                         ],
                                       ),
                                     ),
