@@ -22,6 +22,5 @@ flutter:
 
 
   assets:
-    - assets/images/space.jpg
     - assets/images/quadro.png
     - assets/images/wallpaper.jpg
