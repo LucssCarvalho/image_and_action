@@ -66,16 +66,16 @@ class _CreateTeamState extends State<DetailBottomSheet> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.grey,
-                      child: IconButton(
-                        icon: Icon(
+                    child: InkWell(
+                      onTap: () {},
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.grey,
+                        child: Icon(
                           Icons.remove,
                           size: 20,
                           color: Colors.white,
                         ),
-                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -85,16 +85,16 @@ class _CreateTeamState extends State<DetailBottomSheet> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.grey,
-                      child: IconButton(
-                        icon: Icon(
+                    child: InkWell(
+                      onTap: () {},
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Colors.grey,
+                        child: Icon(
                           Icons.add,
                           size: 20,
                           color: Colors.white,
                         ),
-                        onPressed: () {},
                       ),
                     ),
                   ),
