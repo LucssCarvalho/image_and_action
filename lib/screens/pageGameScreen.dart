@@ -21,6 +21,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
 
   List<String> list;
   List<TeamModal> teams = [];
+  bool inGame = false;
 
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
@@ -197,13 +198,15 @@ class _PageGameScreenState extends State<PageGameScreen> {
           color: Colors.blueGrey,
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Para jogar é necessario pelo menos duas equipes',
-                  style: TextStyle(color: Colors.grey[400]),
-                ),
-              ),
+              teams.length >= 2
+                  ? Row()
+                  : Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Para jogar é necessario pelo menos duas equipes',
+                        style: TextStyle(color: Colors.grey[400]),
+                      ),
+                    ),
               teams == null || teams.isEmpty
                   ? Container(
                       color: Colors.blueGrey,
@@ -260,54 +263,123 @@ class _PageGameScreenState extends State<PageGameScreen> {
                       ),
                     ),
               teams.length >= 2
-                  ? Column(children: <Widget>[
-                      Container(
-                        height: 250,
-                        width: 450,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/quadro.png'),
-                              fit: BoxFit.fill),
-                        ),
-                        child: object != null
-                            ? Text(
-                                object.toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 50,
-                                    color: Colors.white),
-                                textAlign: TextAlign.center,
-                              )
-                            : MaterialButton(
-                                color: Colors.blueGrey[800],
-                                child: Text(
-                                  'Jogar',
+                  ? Column(
+                      children: <Widget>[
+                        Container(
+                          height: 250,
+                          width: 450,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/quadro.png'),
+                                fit: BoxFit.fill),
+                          ),
+                          child: object != null
+                              ? Text(
+                                  object.toString(),
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 50,
+                                      color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                )
+                              : MaterialButton(
+                                  color: Colors.blueGrey[800],
+                                  child: Text(
+                                    'Jogar',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18),
+                                  ),
+                                  onPressed: () {
+                                    random(list);
+                                    inGame = true;
+                                  },
                                 ),
-                                onPressed: () {
-                                  random(list);
-                                },
-                              ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            MaterialButton(
-                              color: Colors.blueGrey[700],
-                              child: Text(
-                                'Opções',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ],
                         ),
-                      ),
-                    ])
+                        inGame
+                            ? Container(
+                                color: Colors.blueGrey[900],
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10.0, bottom: 10.0),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        'Faça a mímica para continuar o jogo',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: MaterialButton(
+                                              child: Text('Iniciar contador'),
+                                              color: Colors.white,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: MaterialButton(
+                                              child: Text('Pausar contador'),
+                                              color: Colors.white,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 50.0,
+                                            right: 50.0,
+                                            bottom: 10.0,
+                                            top: 10.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.access_alarm,
+                                                  color: Colors.grey,
+                                                  size: 30,
+                                                ),
+                                                Text(
+                                                  'Cronômetro',
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  ': 1:00',
+                                                  style: TextStyle(
+                                                    fontSize: 20,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Row(),
+                      ],
+                    )
                   : Row(
                       children: <Widget>[],
                     ),
