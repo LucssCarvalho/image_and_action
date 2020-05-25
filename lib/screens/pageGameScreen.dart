@@ -204,8 +204,11 @@ class _PageGameScreenState extends State<PageGameScreen> {
                   style: TextStyle(color: Colors.grey[400]),
                 ),
               ),
-              teams == null
-                  ? Row()
+              teams == null || teams.isEmpty
+                  ? Container(
+                      color: Colors.blueGrey,
+                      child: Row(),
+                    )
                   : Container(
                       color: Colors.white,
                       height: 60,
@@ -223,13 +226,16 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                       showModalBottomSheet(
                                         backgroundColor: Colors.transparent,
                                         shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.vertical(
-                                                top: Radius.circular(25.0))),
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(25.0),
+                                          ),
+                                        ),
                                         isScrollControlled: true,
                                         context: context,
                                         builder: (context) {
                                           return DetailBottomSheet(
-                                              teams[index]);
+                                            teams[index],
+                                          );
                                         },
                                       );
                                     },
