@@ -22,7 +22,7 @@ class _CreateTeamState extends State<DetailBottomSheet> {
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
-            color: Colors.grey[100]),
+            color: Colors.grey[400]),
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: Column(
@@ -45,16 +45,60 @@ class _CreateTeamState extends State<DetailBottomSheet> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                widget.teamModal.teamName,
-                style: TextStyle(fontSize: 30),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: Text(
+                    widget.teamModal.teamName,
+                    style: TextStyle(fontSize: 30),
+                  ),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Pontos: ${widget.teamModal.ponts}',
-                style: TextStyle(fontSize: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Colors.grey,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.remove,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Pontos: ${widget.teamModal.ponts}',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Colors.grey,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.add,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )
           ],
