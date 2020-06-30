@@ -277,7 +277,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                           ),
                           child: object != null
                               ? Text(
-                                  object.toString(),
+                                  _wordVisible ? object.toString() : '--------',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 50,
@@ -306,7 +306,9 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                   children: <Widget>[
                                     MaterialButton(
                                       color: Colors.blue,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        _updateShowWords(_wordVisible);
+                                      },
                                       child: Container(
                                           child: Row(
                                         children: <Widget>[
@@ -361,28 +363,6 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                           fontSize: 20,
                                         ),
                                       ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: MaterialButton(
-                                              child: Text('Iniciar contador'),
-                                              color: Colors.white,
-                                              onPressed: () {},
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: MaterialButton(
-                                              child: Text('Pausar contador'),
-                                              color: Colors.white,
-                                              onPressed: () {},
-                                            ),
-                                          ),
-                                        ],
-                                      ),
                                       Padding(
                                         padding: const EdgeInsets.only(
                                             left: 50.0,
@@ -423,6 +403,36 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                           ),
                                         ),
                                       ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: MaterialButton(
+                                              child: Icon(Icons.play_arrow),
+                                              color: Colors.white,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: MaterialButton(
+                                              child: Icon(Icons.pause),
+                                              color: Colors.white,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: MaterialButton(
+                                              child: Icon(Icons.refresh),
+                                              color: Colors.white,
+                                              onPressed: () {},
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -457,6 +467,12 @@ class _PageGameScreenState extends State<PageGameScreen> {
       Navigator.pop(context);
     }
     // teams.add(new TeamModal('lucsd', 0));
+  }
+
+  void _updateShowWords(bool visualization) {
+    setState(() {
+      _wordVisible = !visualization;
+    });
   }
 
   void _submit() {

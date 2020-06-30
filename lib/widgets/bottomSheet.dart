@@ -70,7 +70,7 @@ class _CreateTeamState extends State<DetailBottomSheet> {
                       onTap: () {},
                       child: CircleAvatar(
                         radius: 18,
-                        backgroundColor: Colors.grey,
+                        backgroundColor: Colors.redAccent,
                         child: Icon(
                           Icons.remove,
                           size: 20,
@@ -89,7 +89,7 @@ class _CreateTeamState extends State<DetailBottomSheet> {
                       onTap: () {},
                       child: CircleAvatar(
                         radius: 18,
-                        backgroundColor: Colors.grey,
+                        backgroundColor: Colors.green[400],
                         child: Icon(
                           Icons.add,
                           size: 20,
