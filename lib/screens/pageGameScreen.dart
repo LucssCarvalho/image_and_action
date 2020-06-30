@@ -20,11 +20,12 @@ class _PageGameScreenState extends State<PageGameScreen> {
   _PageGameScreenState(this.type);
 
   List<String> list;
-  List<TeamModal> teams = [];
+  List<TeamModal> _teams = [];
   bool inGame = false;
+  bool _wordVisible = true;
 
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
+  final _nameController = TextEditingController();
 
   String object;
 
@@ -51,7 +52,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
   initState() {
     super.initState();
     selectListType(type);
-    print(teams);
+    print(_teams);
   }
 
   @override
@@ -120,7 +121,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextFormField(
-                                  controller: nameController,
+                                  controller: _nameController,
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     hintText: 'Nome da equipe',
@@ -198,7 +199,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
           color: Colors.blueGrey,
           child: Column(
             children: <Widget>[
-              teams.length >= 2
+              _teams.length >= 2
                   ? Row()
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -207,7 +208,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                         style: TextStyle(color: Colors.grey[400]),
                       ),
                     ),
-              teams == null || teams.isEmpty
+              _teams == null || _teams.isEmpty
                   ? Container(
                       color: Colors.blueGrey,
                       child: Row(),
@@ -220,7 +221,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                           Expanded(
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: teams.length,
+                              itemCount: _teams.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -237,7 +238,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                         context: context,
                                         builder: (context) {
                                           return DetailBottomSheet(
-                                            teams[index],
+                                            _teams[index],
                                           );
                                         },
                                       );
@@ -246,11 +247,11 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                       child: Column(
                                         children: <Widget>[
                                           Text(
-                                            teams[index].teamName,
+                                            _teams[index].teamName,
                                             style: TextStyle(fontSize: 20),
                                           ),
                                           Text(
-                                              'Pontos: ${teams[index].ponts.toString()}')
+                                              'Pontos: ${_teams[index].ponts.toString()}')
                                         ],
                                       ),
                                     ),
@@ -262,7 +263,7 @@ class _PageGameScreenState extends State<PageGameScreen> {
                         ],
                       ),
                     ),
-              teams.length >= 2
+              _teams.length >= 2
                   ? Column(
                       children: <Widget>[
                         Container(
@@ -459,11 +460,11 @@ class _PageGameScreenState extends State<PageGameScreen> {
   }
 
   void _submit() {
-    TeamModal team = new TeamModal(nameController.text, 0, Colors.green);
+    TeamModal team = new TeamModal(_nameController.text, 0, Colors.green);
     setState(() {
-      teams.add(team);
-      nameController.text = '';
+      _teams.add(team);
+      _nameController.text = '';
     });
-    print(teams);
+    print(_teams);
   }
 }
