@@ -323,7 +323,9 @@ class _PageGameScreenState extends State<PageGameScreen> {
                                     ),
                                     MaterialButton(
                                       color: Colors.blue,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        random(list);
+                                      },
                                       child: Container(
                                           child: Row(
                                         children: <Widget>[
