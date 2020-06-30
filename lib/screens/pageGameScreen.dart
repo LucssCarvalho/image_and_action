@@ -298,6 +298,53 @@ class _PageGameScreenState extends State<PageGameScreen> {
                         ),
                         inGame
                             ? Container(
+                                color: Colors.blue[900],
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    MaterialButton(
+                                      color: Colors.blue,
+                                      onPressed: () {},
+                                      child: Container(
+                                          child: Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.visibility_off,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            ' Esconder',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      )),
+                                    ),
+                                    MaterialButton(
+                                      color: Colors.blue,
+                                      onPressed: () {},
+                                      child: Container(
+                                          child: Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.refresh,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            ' Trocar',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      )),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Row(),
+                        inGame
+                            ? Container(
                                 color: Colors.blueGrey[900],
                                 child: Padding(
                                   padding: const EdgeInsets.only(
